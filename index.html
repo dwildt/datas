@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Utilitários JavaScript para manipulação de datas: calcule diferenças, visualize fases da lua e muito mais.">
+    <meta name="keywords" content="datas, JavaScript, calendário, fases da lua, utilitários">
+    <meta name="author" content="Wildtech">
+    <meta name="google-adsense-account" content="ca-pub-7212197064868050">
+    <title>Days Utils - Utilitários para Datas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📅</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Utilitários de Data</h1>
+            <p>Funções para manipulação de datas</p>
+        </header>
+
+        <main>
+            <section class="tool-section">
+                <h2>Diferença Entre Datas</h2>
+                <div class="input-group">
+                    <input type="date" id="date1" placeholder="Data inicial">
+                    <input type="date" id="date2" placeholder="Data final">
+                    <button onclick="calculateDifference()">Calcular Diferença</button>
+                </div>
+                <div id="difference-result" class="result"></div>
+            </section>
+
+            <section class="tool-section">
+                <h2>Dias Desde Data</h2>
+                <div class="input-group">
+                    <input type="date" id="since-date" placeholder="Data de referência">
+                    <button onclick="daysSince()">Calcular Dias</button>
+                </div>
+                <div id="days-since-result" class="result"></div>
+            </section>
+
+            <section class="tool-section">
+                <h2>Fases da Lua</h2>
+                <div class="input-group">
+                    <input type="month" id="moon-month" placeholder="Selecionar mês">
+                    <button onclick="generateMoonPhases()">Ver Fases da Lua</button>
+                </div>
+                <div class="moon-options">
+                    <label>
+                        <input type="radio" name="moon-view" value="main" checked>
+                        Fases principais (Nova, Crescente, Cheia, Minguante)
+                    </label>
+                    <label>
+                        <input type="radio" name="moon-view" value="all">
+                        Todas as fases diárias
+                    </label>
+                </div>
+                <div id="moon-phases-container" class="moon-phases"></div>
+            </section>
+
+            <section class="tool-section">
+                <h2>Calendário do Mês</h2>
+                <div class="input-group">
+                    <input type="month" id="calendar-month" placeholder="Selecionar mês">
+                    <button onclick="generateCalendar()">Gerar Calendário</button>
+                </div>
+                <div id="calendar-container" class="calendar"></div>
+            </section>
+
+            <section class="tool-section">
+                <h2>Utilitários Extras</h2>
+                <div class="extra-tools">
+                    <div class="tool-item">
+                        <h3>Idade</h3>
+                        <input type="date" id="birth-date" placeholder="Data de nascimento">
+                        <button onclick="calculateAge()">Calcular Idade</button>
+                        <div id="age-result" class="result"></div>
+                    </div>
+                    
+                    <div class="tool-item">
+                        <h3>Formatação</h3>
+                        <input type="date" id="format-date" placeholder="Data para formatar">
+                        <select id="format-type">
+                            <option value="dd/mm/yyyy">DD/MM/YYYY</option>
+                            <option value="mm-dd-yyyy">MM-DD-YYYY</option>
+                            <option value="yyyy-mm-dd">YYYY-MM-DD</option>
+                            <option value="extenso">Data por extenso</option>
+                        </select>
+                        <button onclick="formatDate()">Formatar</button>
+                        <div id="format-result" class="result"></div>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <p>🚀 Projeto disponível no <a href="https://github.com/dwildt/datas" target="_blank" rel="noopener">GitHub</a></p>
+                <p>💻 Desenvolvido com <strong>vibe coding</strong> usando <a href="https://claude.ai/code" target="_blank" rel="noopener">Claude Code</a></p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="date-utils.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
