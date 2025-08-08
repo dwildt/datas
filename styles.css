@@ -345,4 +345,28 @@ footer {
     .footer-content p {
         font-size: 0.9rem;
     }
+    
+    /* Calendário mobile */
+    .calendar {
+        gap: 1px;
+        padding: 8px;
+    }
+    
+    .calendar-header {
+        padding: 6px 2px;
+        font-size: 0.75rem;
+        min-height: 30px;
+    }
+    
+    .calendar-day {
+        padding: 4px 2px;
+        font-size: 0.8rem;
+        min-height: 30px;
+    }
+    
+    .calendar-week-number {
+        padding: 4px 2px;
+        font-size: 0.7rem;
+        min-height: 30px;
+    }
 }
