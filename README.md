@@ -4,7 +4,7 @@ Projeto JavaScript vanilla com utilitários para manipulação de datas, desenvo
 
 ## 🚀 Demo
 
-Acesse o projeto online: **[Days Utils](https://dwildt.github.io/datas)**
+Acesse o projeto online: **[Datas](https://dwildt.github.io/datas)**
 
 ## ✨ Funcionalidades
 
