@@ -1,4 +1,4 @@
-# Days Utils - Utilitários para Datas 📅
+# Datas - Funções Utilitárias 🗓️
 
 Projeto JavaScript vanilla com utilitários para manipulação de datas, desenvolvido com **vibe coding** usando [Claude Code](https://claude.ai/code).
 
@@ -89,7 +89,7 @@ Contribuições são bem-vindas! Sinta-se à vontade para:
 
 ## 📜 Licença
 
-Este projeto é open source e está disponível sob a [MIT License](LICENSE).
+Este projeto é open source e está disponível sob a [MIT License](LICENSE.md).
 
 ## ❤️ Desenvolvido com
 
