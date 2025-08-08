@@ -43,6 +43,13 @@ datas/
 ├── styles.css          # Estilos responsivos
 ├── date-utils.js       # Classe com funções utilitárias
 ├── app.js             # Lógica de interação da interface
+├── date-utils.test.js  # Testes unitários para date-utils
+├── app.test.js         # Testes unitários para app
+├── jest.setup.js       # Configuração do Jest
+├── package.json        # Dependências e scripts do projeto
+├── package-lock.json   # Versões exatas das dependências
+├── coverage/           # Relatórios de cobertura de testes
+├── TESTING.md          # Documentação dos testes
 └── README.md          # Este arquivo
 ```
 
@@ -55,14 +62,21 @@ datas/
    - Branch: "main" 
    - Folder: "/ (root)"
 4. Clique em **Save**
-5. Seu site estará disponível em: `https://dwildt.github.io/nome-do-repositorio`
+5. Seu site estará disponível em: `https://dwildt.github.io/datas`
 
 ## 💻 Tecnologias
 
 - **HTML5** - Estrutura semântica
 - **CSS3** - Estilos com Flexbox/Grid e gradientes
 - **JavaScript ES6+** - Lógica pura (vanilla)
+- **Jest** - Framework de testes unitários
 - **GitHub Pages** - Hospedagem gratuita
+
+## 🧪 Testes
+
+Este projeto possui **testes unitários** que garantem a qualidade e funcionamento das funções utilitárias.
+
+Para informações detalhadas sobre execução de testes, cobertura e configuração, consulte: **[TESTING.md](TESTING.md)**
 
 ## 🛠️ Desenvolvimento Local
 
