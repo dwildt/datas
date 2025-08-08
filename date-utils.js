@@ -252,3 +252,8 @@ class DateUtils {
         return mainPhases;
     }
 }
+
+// Export para testes Node.js (Jest)
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = DateUtils;
+}

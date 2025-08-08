@@ -225,3 +225,15 @@ document.addEventListener('DOMContentLoaded', function() {
         radio.addEventListener('change', generateMoonPhases);
     });
 });
+
+// Exports para testes Node.js (Jest)
+if (typeof module !== 'undefined' && module.exports) {
+    module.exports = {
+        calculateDifference,
+        daysSince,
+        generateCalendar,
+        calculateAge,
+        formatDate,
+        generateMoonPhases
+    };
+}
