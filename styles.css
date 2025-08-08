@@ -134,7 +134,7 @@ button:hover {
 
 .calendar {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    grid-template-columns: repeat(8, 1fr);
     gap: 2px;
     background-color: #f8f9fa;
     padding: 15px;
@@ -172,6 +172,20 @@ button:hover {
     background: #ff7b00;
     color: white;
     font-weight: bold;
+}
+
+.calendar-week-number {
+    background: #8b4513;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .moon-options {

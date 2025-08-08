@@ -63,7 +63,7 @@ function generateCalendar() {
         'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'
     ];
 
-    const weekDays = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
+    const weekDays = ['Sem', 'Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
 
     let html = `
         <div style="grid-column: 1 / -1; text-align: center; font-size: 1.2rem; font-weight: bold; margin-bottom: 10px; color: #333;">
@@ -75,7 +75,13 @@ function generateCalendar() {
         html += `<div class="calendar-header">${day}</div>`;
     });
     
-    calendar.forEach(dayObj => {
+    calendar.forEach((dayObj, index) => {
+        if (index % 7 === 0) {
+            const currentDate = new Date(year, month - 1, dayObj.isCurrentMonth ? dayObj.day : 1);
+            const weekNumber = DateUtils.getWeekNumber(currentDate);
+            html += `<div class="calendar-week-number">${weekNumber}</div>`;
+        }
+        
         let className = 'calendar-day';
         if (!dayObj.isCurrentMonth) className += ' other-month';
         if (dayObj.isToday) className += ' today';
