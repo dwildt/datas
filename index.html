@@ -20,6 +20,15 @@
 
         <main>
             <section class="tool-section">
+                <h2>Dias Desde Data</h2>
+                <div class="input-group">
+                    <input type="date" id="since-date" placeholder="Data de referência">
+                    <button onclick="daysSince()">Calcular Dias</button>
+                </div>
+                <div id="days-since-result" class="result"></div>
+            </section>
+
+            <section class="tool-section">
                 <h2>Diferença Entre Datas</h2>
                 <div class="input-group">
                     <input type="date" id="date1" placeholder="Data inicial">
@@ -27,15 +36,6 @@
                     <button onclick="calculateDifference()">Calcular Diferença</button>
                 </div>
                 <div id="difference-result" class="result"></div>
-            </section>
-
-            <section class="tool-section">
-                <h2>Dias Desde Data</h2>
-                <div class="input-group">
-                    <input type="date" id="since-date" placeholder="Data de referência">
-                    <button onclick="daysSince()">Calcular Dias</button>
-                </div>
-                <div id="days-since-result" class="result"></div>
             </section>
 
             <section class="tool-section">

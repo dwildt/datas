@@ -218,6 +218,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('calendar-month').value = currentMonth;
     document.getElementById('moon-month').value = currentMonth;
     
+    daysSince();
     generateCalendar();
     generateMoonPhases();
     
