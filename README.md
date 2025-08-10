@@ -39,6 +39,9 @@ O cálculo das fases da lua utiliza:
 
 ```
 datas/
+├── .github/
+│   └── FUNDING.yml      # Configuração de patrocínio/apoio
+├── coverage/            # Relatórios de cobertura de testes
 ├── index.html          # Interface principal
 ├── styles.css          # Estilos responsivos
 ├── date-utils.js       # Classe com funções utilitárias
@@ -48,7 +51,7 @@ datas/
 ├── jest.setup.js       # Configuração do Jest
 ├── package.json        # Dependências e scripts do projeto
 ├── package-lock.json   # Versões exatas das dependências
-├── coverage/           # Relatórios de cobertura de testes
+├── LICENSE.md          # Licença MIT do projeto
 ├── TESTING.md          # Documentação dos testes
 └── README.md          # Este arquivo
 ```
