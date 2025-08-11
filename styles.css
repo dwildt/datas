@@ -162,8 +162,19 @@ button:hover {
     border: 1px solid #e9ecef;
     min-height: 40px;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.day-number {
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.moon-icon-small {
+    font-size: 0.8rem;
+    line-height: 1;
 }
 
 .calendar-day.other-month {

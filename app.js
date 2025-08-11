@@ -57,6 +57,20 @@ function generateCalendar() {
 
     const [year, month] = monthInput.split('-').map(Number);
     const calendar = DateUtils.generateCalendar(year, month - 1);
+    const moonPhases = DateUtils.getMainMoonPhasesForMonth(year, month - 1);
+    
+    // Criar mapa de fases da lua por dia
+    const moonByDay = {};
+    moonPhases.forEach(phase => {
+        const phaseDate = new Date(phase.date);
+        if (phaseDate.getFullYear() === year && phaseDate.getMonth() === month - 1) {
+            const day = phaseDate.getDate();
+            moonByDay[day] = {
+                icon: phase.icon,
+                phase: phase.phase
+            };
+        }
+    });
     
     const monthNames = [
         'Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho',
@@ -86,8 +100,40 @@ function generateCalendar() {
         if (!dayObj.isCurrentMonth) className += ' other-month';
         if (dayObj.isToday) className += ' today';
         
-        html += `<div class="${className}">${dayObj.day}</div>`;
+        // Verificar se há fase da lua neste dia
+        let dayContent = dayObj.day;
+        if (dayObj.isCurrentMonth && moonByDay[dayObj.day]) {
+            const moonData = moonByDay[dayObj.day];
+            dayContent = `
+                <div class="day-number">${dayObj.day}</div>
+                <div class="moon-icon-small" title="${moonData.phase}">${moonData.icon}</div>
+            `;
+        }
+        
+        html += `<div class="${className}">${dayContent}</div>`;
     });
+
+    // Adicionar legenda das fases da lua
+    if (moonPhases.length > 0) {
+        html += `
+            <div style="grid-column: 1 / -1; margin-top: 15px; padding: 10px; background: #f8f9fa; border-radius: 6px; font-size: 0.9rem; text-align: center; color: #666;">
+                <strong>Fases da Lua:</strong><br>
+        `;
+        
+        const legendItems = moonPhases
+            .filter(phase => {
+                const phaseDate = new Date(phase.date);
+                return phaseDate.getFullYear() === year && phaseDate.getMonth() === month - 1;
+            })
+            .map(phase => {
+                const phaseDate = new Date(phase.date);
+                const day = phaseDate.getDate();
+                return `${phase.icon} ${day} - ${phase.phase}`;
+            });
+            
+        html += legendItems.join(' | ');
+        html += '</div>';
+    }
 
     container.innerHTML = html;
 }
