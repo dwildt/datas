@@ -210,15 +210,17 @@ document.addEventListener('DOMContentLoaded', function() {
     const today = new Date();
     const todayStr = today.toISOString().split('T')[0];
     const currentMonth = today.toISOString().slice(0, 7);
-    const initialDate = '2024-01-01';
+    const differenceInitialDate = '2025-08-07';
+    const sinceInitialDate = '2024-01-01';
     
-    document.getElementById('date1').value = initialDate;
+    document.getElementById('date1').value = differenceInitialDate;
     document.getElementById('date2').value = todayStr;
-    document.getElementById('since-date').value = initialDate;
+    document.getElementById('since-date').value = sinceInitialDate;
     document.getElementById('calendar-month').value = currentMonth;
     document.getElementById('moon-month').value = currentMonth;
     
     daysSince();
+    calculateDifference();
     generateCalendar();
     generateMoonPhases();
     
