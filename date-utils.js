@@ -131,13 +131,14 @@ class DateUtils {
         }
         
         const totalCells = Math.ceil(calendar.length / 7) * 7;
+        let nextMonthDay = 1;
         for (let i = calendar.length; i < totalCells; i++) {
-            const nextMonthDay = i - calendar.length + 1;
             calendar.push({
                 day: nextMonthDay,
                 isCurrentMonth: false,
                 isToday: false
             });
+            nextMonthDay++;
         }
         
         return calendar;
