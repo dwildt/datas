@@ -1,0 +1,59 @@
+{
+  "projectInfo": {
+    "name": "Datas - Funções Utilitárias",
+    "type": "JavaScript Vanilla Library",
+    "language": "Portuguese/Brazilian",
+    "framework": "None (Vanilla JS)",
+    "testing": "Jest",
+    "deployment": "GitHub Pages"
+  },
+  "mainFiles": {
+    "core": "date-utils.js",
+    "ui": "app.js", 
+    "tests": ["date-utils.test.js", "app.test.js"],
+    "config": "package.json",
+    "docs": ["README.md", "CLAUDE.md", "TESTING.md"]
+  },
+  "codingStandards": {
+    "style": "ES6+",
+    "classes": "Static methods in DateUtils",
+    "naming": "camelCase",
+    "errors": "Portuguese messages",
+    "documentation": "JSDoc required",
+    "testing": "Jest with AAA pattern"
+  },
+  "uiPatterns": {
+    "ids": "Semantic descriptive IDs",
+    "validation": "Visual feedback with border colors",
+    "events": "DOMContentLoaded registration",
+    "results": "HTML injection with structured display"
+  },
+  "domainSpecific": {
+    "dateFormats": {
+      "input": "YYYY-MM-DD",
+      "display": "DD/MM/YYYY", 
+      "extended": "Weekday, DD de Month de YYYY"
+    },
+    "moonPhases": {
+      "algorithm": "Astronomical Julian Day",
+      "cycle": "29.53058867 days",
+      "phases": 8,
+      "icons": "Unicode moon emojis"
+    },
+    "calendar": {
+      "startDay": "Sunday (0)",
+      "structure": "Array of objects",
+      "properties": ["day", "isCurrentMonth", "isToday"]
+    }
+  },
+  "constants": {
+    "colors": {
+      "primary": "#ff7b00",
+      "secondary": "#8b4513", 
+      "success": "#28a745",
+      "error": "#dc3545"
+    },
+    "months": ["Janeiro", "Fevereiro", "Março", "Abril", "Maio", "Junho", "Julho", "Agosto", "Setembro", "Outubro", "Novembro", "Dezembro"],
+    "weekdays": ["Domingo", "Segunda-feira", "Terça-feira", "Quarta-feira", "Quinta-feira", "Sexta-feira", "Sábado"]
+  }
+}

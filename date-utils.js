@@ -1,4 +1,17 @@
+/**
+ * Classe utilitária para manipulação de datas
+ * Contém métodos estáticos para cálculos, formatação e operações com datas
+ * @class DateUtils
+ */
 class DateUtils {
+    /**
+     * Calcula a diferença em dias entre duas datas
+     * @param {string|Date} date1 - Primeira data
+     * @param {string|Date} date2 - Segunda data  
+     * @returns {number} Número de dias entre as datas (sempre positivo)
+     * @example
+     * DateUtils.daysBetween('2024-01-01', '2024-01-10'); // retorna 9
+     */
     static daysBetween(date1, date2) {
         const d1 = new Date(date1);
         const d2 = new Date(date2);
@@ -7,6 +20,13 @@ class DateUtils {
         return diffDays;
     }
 
+    /**
+     * Calcula quantos dias se passaram desde uma data específica
+     * @param {string|Date} date - Data de referência
+     * @returns {number} Número de dias desde a data (negativo se for data futura)
+     * @example
+     * DateUtils.daysSince('2024-01-01'); // retorna dias desde 1º de janeiro de 2024
+     */
     static daysSince(date) {
         const targetDate = new Date(date);
         const today = new Date();
@@ -15,6 +35,13 @@ class DateUtils {
         return diffDays;
     }
 
+    /**
+     * Calcula a idade completa em anos, meses e dias
+     * @param {string|Date} birthDate - Data de nascimento
+     * @returns {{years: number, months: number, days: number}} Objeto com idade completa
+     * @example
+     * DateUtils.calculateAge('1990-01-01'); // retorna {years: 34, months: 0, days: 0}
+     */
     static calculateAge(birthDate) {
         const birth = new Date(birthDate);
         const today = new Date();
@@ -37,6 +64,15 @@ class DateUtils {
         return { years, months, days };
     }
 
+    /**
+     * Formata uma data em diferentes padrões
+     * @param {string|Date} date - Data para formatação
+     * @param {string} format - Formato desejado ('dd/mm/yyyy', 'mm-dd-yyyy', 'yyyy-mm-dd', 'extenso')
+     * @returns {string} Data formatada
+     * @example
+     * DateUtils.formatDate('2024-01-01', 'dd/mm/yyyy'); // retorna '01/01/2024'
+     * DateUtils.formatDate('2024-01-01', 'extenso'); // retorna 'Segunda-feira, 01 de Janeiro de 2024'
+     */
     static formatDate(date, format) {
         const d = new Date(date);
         const day = String(d.getDate()).padStart(2, '0');
@@ -67,10 +103,25 @@ class DateUtils {
         }
     }
 
+    /**
+     * Verifica se um ano é bissexto
+     * @param {number} year - Ano a ser verificado
+     * @returns {boolean} True se for ano bissexto
+     * @example
+     * DateUtils.isLeapYear(2024); // retorna true
+     * DateUtils.isLeapYear(2023); // retorna false
+     */
     static isLeapYear(year) {
         return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
     }
 
+    /**
+     * Verifica se uma data é fim de semana (sábado ou domingo)
+     * @param {string|Date} date - Data a ser verificada
+     * @returns {boolean} True se for fim de semana
+     * @example
+     * DateUtils.isWeekend('2024-01-06'); // retorna true (sábado)
+     */
     static isWeekend(date) {
         const d = new Date(date);
         const day = d.getDay();
@@ -170,6 +221,13 @@ class DateUtils {
         return parts.join(', ') || '0 dias';
     }
 
+    /**
+     * Converte uma data para dia juliano (usado em cálculos astronômicos)
+     * @param {string|Date} date - Data para conversão
+     * @returns {number} Número do dia juliano
+     * @example
+     * DateUtils.julianDay('2024-01-01'); // retorna número do dia juliano
+     */
     static julianDay(date) {
         const d = new Date(date);
         const a = Math.floor((14 - (d.getMonth() + 1)) / 12);
@@ -180,10 +238,17 @@ class DateUtils {
                Math.floor(y / 4) - Math.floor(y / 100) + Math.floor(y / 400) - 32045;
     }
 
+    /**
+     * Calcula a fase da lua para uma data específica usando algoritmo astronômico
+     * @param {string|Date} date - Data para calcular a fase lunar
+     * @returns {string} Nome da fase lunar em português
+     * @example
+     * DateUtils.getMoonPhase('2024-01-11'); // retorna 'Nova'
+     */
     static getMoonPhase(date) {
         const jd = DateUtils.julianDay(date);
-        const newMoonJD = 2451549.5;
-        const synodicMonth = 29.53058867;
+        const newMoonJD = 2451549.5; // Referência de lua nova (Jan 6, 2000)
+        const synodicMonth = 29.53058867; // Duração do ciclo lunar em dias
         
         const phase = ((jd - newMoonJD) % synodicMonth) / synodicMonth;
         const normalizedPhase = phase < 0 ? phase + 1 : phase;
@@ -200,6 +265,13 @@ class DateUtils {
         return 'Nova';
     }
 
+    /**
+     * Retorna o emoji correspondente à fase da lua
+     * @param {string} phase - Nome da fase lunar
+     * @returns {string} Emoji da fase lunar
+     * @example
+     * DateUtils.getMoonPhaseIcon('Cheia'); // retorna '🌕'
+     */
     static getMoonPhaseIcon(phase) {
         const icons = {
             'Nova': '🌑',

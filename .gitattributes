@@ -1,0 +1,24 @@
+# Git attributes for Datas project
+# Helps GitHub understand project structure and language detection
+
+# JavaScript files
+*.js linguist-language=JavaScript
+*.js text eol=lf
+
+# Test files
+*.test.js linguist-language=JavaScript
+jest.setup.js linguist-language=JavaScript
+
+# Documentation
+*.md text eol=lf
+.copilot-instructions.md linguist-documentation=true
+CODING_PATTERNS.md linguist-documentation=true
+
+# Web files
+*.html text eol=lf
+*.css text eol=lf
+
+# Configuration files
+package.json text eol=lf
+package-lock.json text eol=lf
+.gitignore text eol=lf
