@@ -202,7 +202,7 @@ static formatDuration(days) {
 
     const parts = [];
     if (years > 0) parts.push(`${years} ano${years !== 1 ? 's' : ''}`);
-    if (months > 0) parts.push(`${months} mês${months !== 1 ? 'es' : ''}`);
+    if (months > 0) parts.push(`${months} ${months !== 1 ? 'meses' : 'mês'}`);
     if (remainingDays > 0) parts.push(`${remainingDays} dia${remainingDays !== 1 ? 's' : ''}`);
 
     return parts.join(', ') || '0 dias';
