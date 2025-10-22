@@ -46,7 +46,7 @@ describe('DateUtils', () => {
       // Simulando hoje como 2024-01-01
       const mockToday = new Date('2024-01-01');
       const OriginalDate = Date;
-      
+
       global.Date = jest.fn((date) => {
         if (date) return new OriginalDate(date);
         return mockToday;
@@ -58,6 +58,66 @@ describe('DateUtils', () => {
       expect(result.days).toBe(0);
 
       global.Date = OriginalDate;
+    });
+  });
+
+  describe('calculateDateDifference', () => {
+    test('deve calcular diferença exata entre duas datas no mesmo ano', () => {
+      const result = DateUtils.calculateDateDifference('2025-01-01', '2025-10-21');
+      expect(result.years).toBe(0);
+      expect(result.months).toBe(9);
+      expect(result.days).toBe(20);
+    });
+
+    test('deve calcular diferença com datas invertidas', () => {
+      const result = DateUtils.calculateDateDifference('2025-10-21', '2025-01-01');
+      expect(result.years).toBe(0);
+      expect(result.months).toBe(9);
+      expect(result.days).toBe(20);
+    });
+
+    test('deve calcular diferença entre anos diferentes', () => {
+      const result = DateUtils.calculateDateDifference('2023-03-15', '2025-08-20');
+      expect(result.years).toBe(2);
+      expect(result.months).toBe(5);
+      expect(result.days).toBe(5);
+    });
+
+    test('deve calcular diferença quando dia final é menor que inicial', () => {
+      const result = DateUtils.calculateDateDifference('2024-01-31', '2024-03-15');
+      expect(result.years).toBe(0);
+      expect(result.months).toBe(1);
+      // 31 jan -> 15 mar: meses = 3 - 1 = 2, dias = 15 - 31 = -16
+      // Ajuste: meses = 2 - 1 = 1, dias = 29 (fev 2024) + (-16) = 13 dias
+      expect(result.days).toBe(13);
+    });
+
+    test('deve calcular diferença considerando ano bissexto', () => {
+      const result = DateUtils.calculateDateDifference('2024-01-01', '2024-03-01');
+      expect(result.years).toBe(0);
+      expect(result.months).toBe(2);
+      expect(result.days).toBe(0);
+    });
+
+    test('deve retornar zero para mesma data', () => {
+      const result = DateUtils.calculateDateDifference('2024-06-15', '2024-06-15');
+      expect(result.years).toBe(0);
+      expect(result.months).toBe(0);
+      expect(result.days).toBe(0);
+    });
+
+    test('deve calcular diferença de exatamente um ano', () => {
+      const result = DateUtils.calculateDateDifference('2023-01-01', '2024-01-01');
+      expect(result.years).toBe(1);
+      expect(result.months).toBe(0);
+      expect(result.days).toBe(0);
+    });
+
+    test('deve calcular diferença de vários anos completos', () => {
+      const result = DateUtils.calculateDateDifference('2020-05-20', '2025-05-20');
+      expect(result.years).toBe(5);
+      expect(result.months).toBe(0);
+      expect(result.days).toBe(0);
     });
   });
 

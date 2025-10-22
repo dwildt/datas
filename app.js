@@ -10,8 +10,15 @@ function calculateDifference() {
     }
 
     const days = DateUtils.daysBetween(date1, date2);
-    const duration = DateUtils.formatDuration(days);
-    
+    const diff = DateUtils.calculateDateDifference(date1, date2);
+
+    // Formatar duração de forma precisa
+    const parts = [];
+    if (diff.years > 0) parts.push(`${diff.years} ano${diff.years !== 1 ? 's' : ''}`);
+    if (diff.months > 0) parts.push(`${diff.months} mês${diff.months !== 1 ? 'es' : ''}`);
+    if (diff.days > 0) parts.push(`${diff.days} dia${diff.days !== 1 ? 's' : ''}`);
+    const duration = parts.length > 0 ? parts.join(', ') : '0 dias';
+
     resultDiv.innerHTML = `
         <strong>Diferença:</strong> ${days} dias<br>
         <strong>Duração:</strong> ${duration}

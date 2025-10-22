@@ -45,7 +45,7 @@ class DateUtils {
     static calculateAge(birthDate) {
         const birth = new Date(birthDate);
         const today = new Date();
-        
+
         let years = today.getFullYear() - birth.getFullYear();
         let months = today.getMonth() - birth.getMonth();
         let days = today.getDate() - birth.getDate();
@@ -53,6 +53,47 @@ class DateUtils {
         if (days < 0) {
             months--;
             const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+            days += lastMonth.getDate();
+        }
+
+        if (months < 0) {
+            years--;
+            months += 12;
+        }
+
+        return { years, months, days };
+    }
+
+    /**
+     * Calcula a diferença real entre duas datas em anos, meses e dias
+     * Similar a calculateAge, mas funciona com qualquer par de datas
+     * @param {string|Date} date1 - Primeira data
+     * @param {string|Date} date2 - Segunda data
+     * @returns {{years: number, months: number, days: number}} Objeto com diferença em anos, meses e dias
+     * @example
+     * DateUtils.calculateDateDifference('2025-01-01', '2025-10-21'); // retorna {years: 0, months: 9, days: 20}
+     */
+    static calculateDateDifference(date1, date2) {
+        // Converter strings para Date objects, garantindo horário local
+        const parseDate = (d) => {
+            if (d instanceof Date) return d;
+            const [year, month, day] = d.split('-').map(Number);
+            return new Date(year, month - 1, day);
+        };
+
+        const d1 = parseDate(date1);
+        const d2 = parseDate(date2);
+
+        // Garantir que d1 é a data mais antiga
+        const [startDate, endDate] = d1 < d2 ? [d1, d2] : [d2, d1];
+
+        let years = endDate.getFullYear() - startDate.getFullYear();
+        let months = endDate.getMonth() - startDate.getMonth();
+        let days = endDate.getDate() - startDate.getDate();
+
+        if (days < 0) {
+            months--;
+            const lastMonth = new Date(endDate.getFullYear(), endDate.getMonth(), 0);
             days += lastMonth.getDate();
         }
 
